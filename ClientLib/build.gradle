@@ -1,0 +1,63 @@
+apply plugin: 'com.android.library'
+apply plugin: 'com.getkeepsafe.dexcount'
+android {
+    compileSdkVersion 28
+    buildToolsVersion "28.0.3"
+
+    dexOptions {
+        javaMaxHeapSize "4g"
+    }
+    defaultConfig {
+        minSdkVersion 19
+        targetSdkVersion 28
+
+        //Build config fields
+        buildConfigField "boolean", "SITL_DEBUG", "false"
+        buildConfigField "String", "SOLO_LINK_IP", '\"134.175.130.23\"'
+        buildConfigField "boolean", "WRITE_LOG_FILE", "false"
+        buildConfigField "int", "LOG_FILE_LEVEL", "7"
+    }
+
+    sourceSets {
+        main {
+            aidl.srcDirs = ['src/main/java']
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_7
+        targetCompatibility JavaVersion.VERSION_1_7
+    }
+    lintOptions {
+        abortOnError false
+    }
+    testOptions {
+        unitTests.returnDefaultValues = true
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+dependencies {
+    implementation 'com.android.support:support-v4:28.0.0'
+    implementation 'com.android.support:appcompat-v7:28.0.0'
+    implementation 'com.jakewharton.timber:timber:3.1.0'
+
+    api "com.google.android.gms:play-services-base:8.4.0"
+    api "com.google.android.gms:play-services-location:8.4.0"
+    api "com.google.android.gms:play-services-maps:8.4.0"
+    //Java semver library
+    implementation 'com.github.zafarkhaja:java-semver:0.9.0'
+    implementation 'com.jcraft:jsch:0.1.51'
+    //MP4 generation library
+    implementation 'com.googlecode.mp4parser:isoparser:1.1.7'
+    implementation 'org.droidplanner.android:usb-serial-android:0.1.0'
+    implementation files('libs/d2xx.jar')
+    api project(path: ':mavilink')
+    androidTestImplementation "org.robolectric:robolectric:3.0"
+}

@@ -1,0 +1,96 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+android {
+
+    signingConfigs {
+        config {
+            keyAlias 'airline'
+            keyPassword 'al123456'
+            storeFile file('./keystore/airline.jks')
+            storePassword 'al123456'
+        }
+    }
+    compileSdkVersion 28
+    buildToolsVersion "28.0.3"
+    defaultConfig {
+        applicationId "com.tao.vehiclemvdemo"
+        minSdkVersion 19
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+        multiDexEnabled true
+        vectorDrawables.useSupportLibrary = true
+        buildConfigField "boolean", "WRITE_LOG_FILE", "true"
+        buildConfigField "int", "LOG_FILE_LEVEL", "7"
+        buildConfigField "boolean", "ENABLE_CRASHLYTICS", "false"
+        ndk {
+            abiFilters 'armeabi', 'armeabi-v7a', 'armeabi-v8a', 'x86', 'x86_64'
+        }
+        resConfigs "en", "zh"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.config
+        }
+        debug {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.config
+        }
+    }
+//    repositories {
+//        flatDir {
+//            dirs 'libs'
+//        }
+//    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_7
+        targetCompatibility JavaVersion.VERSION_1_7
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    def androidDependencies = rootProject.ext.androidDependencies
+    def viewDependencies = rootProject.ext.viewDependencies
+    def dataDependencies = rootProject.ext.dataDependencies
+    implementation 'com.android.support:appcompat-v7:28.0.0'
+    implementation 'com.android.support:support-v4:28.0.0'
+    implementation 'com.android.support:preference-v7:28.0.0'
+    implementation 'com.android.support:preference-v14:28.0.0'
+    implementation 'com.android.support:cardview-v7:28.0.0'
+    implementation 'com.android.support:recyclerview-v7:28.0.0'
+    implementation 'com.android.support:design:28.0.0'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
+    implementation 'com.android.support:multidex:1.0.3'
+    implementation 'com.github.gabrielemariotti.changeloglib:changelog:2.0.0'
+    /**
+     * 调整字体大小的View
+     */
+    implementation 'me.grantland:autofittextview:0.2.1'
+    implementation(name: 'shimmer-android-release', ext: 'aar')
+    implementation(name: 'libuvccamera-release', ext: 'aar')
+    implementation(name: 'sliding-up-panel-3.3.0', ext: 'aar')
+
+    implementation files('libs/droneapi-java-0.3-SNAPSHOT.jar')
+    implementation files('libs/protobuf-java-2.5.0.jar')
+    implementation files('libs/jeromq-0.3.4.jar')
+    implementation files('libs/sius-0.3.1-SNAPSHOT.jar')
+    implementation files('libs/BaiduLBS_Android.jar')
+
+    implementation 'com.squareup.okhttp:okhttp:2.5.0'
+    implementation 'com.squareup.okhttp:okhttp-urlconnection:2.5.0'
+
+    implementation 'com.jakewharton.timber:timber:3.1.0'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.3.21"
+    //图表
+    implementation 'com.github.lecho:hellocharts-library:1.5.5@aar'
+    implementation project(path: ':ClientLib')
+    //权限
+    implementation dataDependencies.rxpermissions2
+    //rx
+    implementation dataDependencies.rxbinding2
+}

@@ -1,0 +1,104 @@
+allprojects {
+    repositories {
+        google()
+        jcenter()
+        maven { url "https://jitpack.io" }
+    }
+}
+
+ext {
+    versionCode = 68
+    versionName = "1.68"
+    //Android
+    androidBuildToolsVersion = "28.0.3"
+    androidMinSdkVersion = 19
+    androidTargetSdkVersion = 28
+    androidCompileSdkVersion = 28
+    supportLibraryVersion = '28.0.0'
+    multidexVersion = '1.0.3'
+    constraintVersion = '1.1.3'
+    gsyVideoVersion = '6.0.3'
+    butterKnifeVersion = '8.8.1'
+    thinkerCrashReportUpgradeVersion = '1.3.6'
+    tinkerandroidlibVersion = '1.9.9'
+    bannerView = '1.4.10'
+    imageLoader = '4.5.0'
+    wallelibraryVersion = '1.1.6'
+    androidPickerViewVersion = '4.1.7'
+    rxpermissions2Version = '0.9.4@aar'
+    easypermissionsVersion = '1.0.1'
+    gridPasswordViewVersion = '0.3'
+    greendaoVersion = '3.2.2'
+    eventbusVersion = '3.1.1'
+    gsonVersion = '2.8.2'
+    okgoVersion = '3.0.4'
+    okgoRx2Version = '2.0.2'
+
+    smartRefreshLayoutVersion = '1.0.5.1'
+    rxbinding2Version = '2.1.1'
+    rxjavaVersion = '2.0.5'
+    rxjavaAndroidVersion = '2.0.1'
+    arouterApiVersion = '1.4.1'
+    arouterCompilerVersion = '1.2.2'
+    opensdkwechatVersion = '5.3.1'
+
+
+    fastjsonandroidVersion = '1.1.71.android'
+    okhttp3Version = '3.12.0'
+    retrofit2Version = '2.6.0'
+    okhttp3interceptorVersion = '3.11.0'
+
+    androidDependencies = [
+            recyclerView: "com.android.support:recyclerview-v7:${supportLibraryVersion}",
+            appcompat_v7: "com.android.support:appcompat-v7:${supportLibraryVersion}",
+            support_v4  : "com.android.support:support-v4:${supportLibraryVersion}",
+            cardview    : "com.android.support:cardview-v7:${supportLibraryVersion}",
+            design      : "com.android.support:design:${supportLibraryVersion}",
+            multidex    : "com.android.support:multidex:${multidexVersion}",
+            constraint  : "com.android.support.constraint:constraint-layout:${constraintVersion}",
+    ]
+
+    viewDependencies = [
+            gridPasswordView  : "com.jungly:gridPasswordView:${gridPasswordViewVersion}",
+            butterKnife       : "com.jakewharton:butterknife:${butterKnifeVersion}",
+            apt_butterKnife   : "com.jakewharton:butterknife-compiler:${butterKnifeVersion}",
+            glide             : "com.github.bumptech.glide:glide:${imageLoader}",
+            banner            : "com.youth.banner:banner:${bannerView}",
+            androidPickerView : "com.contrarywind:Android-PickerView:${androidPickerViewVersion}",
+            smartRefreshLayout: "com.scwang.smartrefresh:SmartRefreshLayout:${smartRefreshLayoutVersion}",
+            navi3dmap         : "com.amap.api:navi-3dmap:latest.integration",
+            searchmap         : "com.amap.api:search:latest.integration",
+            map2d             : "com.amap.api:map2d:latest.integration",
+            locationmap       : "com.amap.api:location:latest.integration",
+            arouterapi        : "com.alibaba:arouter-api:${arouterApiVersion}",
+            aptaroutercompiler: "com.alibaba:arouter-compiler:${arouterCompilerVersion}",
+            jsbridge          : "com.github.lzyzsd:jsbridge:1.0.4",
+    ]
+
+    dataDependencies = [
+            rxbinding2               : "com.jakewharton.rxbinding2:rxbinding:${rxbinding2Version}",
+            okgo                     : "com.lzy.net:okgo:${okgoVersion}",
+            okrx2                    : "com.lzy.net:okrx2:${okgoRx2Version}",
+            gson                     : "com.google.code.gson:gson:${gsonVersion}",
+            eventbus                 : "org.greenrobot:eventbus:${eventbusVersion}",
+            greendao                 : "org.greenrobot:greendao:${greendaoVersion}",
+            greendaosqlcipher        : "net.zetetic:android-database-sqlcipher:3.5.7@aar",
+            rxpermissions2           : "com.tbruyelle.rxpermissions2:rxpermissions:${rxpermissions2Version}",
+            easypermissions          : "pub.devrel:easypermissions:${easypermissionsVersion}",
+            wallelibrary             : "com.meituan.android.walle:library:${wallelibraryVersion}",
+            videocache               : "com.shuyu:gsyVideoPlayer-java:${gsyVideoVersion}",
+            videocachearmv7a         : "com.shuyu:gsyVideoPlayer-armv7a:${gsyVideoVersion}",
+            videocachearm64          : "com.shuyu:gsyVideoPlayer-arm64:${gsyVideoVersion}",
+            videocachex86            : "com.shuyu:gsyVideoPlayer-x86:${gsyVideoVersion}",
+            thinkerCrashReportUpgrade: "com.tencent.bugly:crashreport_upgrade:${thinkerCrashReportUpgradeVersion}",
+            thinkernativecrashreport : "com.tencent.bugly:nativecrashreport:latest.release:${thinkerCrashReportUpgradeVersion}",
+            tinkerandroidlib         : "com.tencent.tinker:tinker-android-lib:${tinkerandroidlibVersion}",
+            opensdkwechat            : "com.tencent.mm.opensdk:wechat-sdk-android-with-mta:${opensdkwechatVersion}",
+            rxjava2                  : "io.reactivex.rxjava2:rxjava:${rxjavaVersion}",
+            rxjavaandroid            : "io.reactivex.rxjava2:rxandroid:${rxjavaAndroidVersion}",
+            fastjsonandroid          : "com.alibaba:fastjson:${fastjsonandroidVersion}",
+            okhttp3                  : "com.squareup.okhttp3:okhttp:${okhttp3Version}",
+            retrofit2                : "com.squareup.retrofit2:retrofit:${retrofit2Version}",
+            okhttp3interceptor       : "com.squareup.okhttp3:logging-interceptor:${okhttp3interceptorVersion}",
+    ]
+}
